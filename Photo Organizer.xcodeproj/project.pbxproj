@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		ADCC79301B51904D008DEDCA /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADCC792F1B51904D008DEDCA /* main.swift */; };
+		ADF836FF1B571F59001257DE /* FileBean.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADF836FE1B571F59001257DE /* FileBean.swift */; };
+		ADF837011B571FD7001257DE /* FileDestination.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADF837001B571FD7001257DE /* FileDestination.swift */; };
+		ADF837031B571FEC001257DE /* FileMover.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADF837021B571FEC001257DE /* FileMover.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -25,6 +28,9 @@
 /* Begin PBXFileReference section */
 		ADCC792C1B51904D008DEDCA /* Photo Organizer */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "Photo Organizer"; sourceTree = BUILT_PRODUCTS_DIR; };
 		ADCC792F1B51904D008DEDCA /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
+		ADF836FE1B571F59001257DE /* FileBean.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileBean.swift; sourceTree = "<group>"; };
+		ADF837001B571FD7001257DE /* FileDestination.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileDestination.swift; sourceTree = "<group>"; };
+		ADF837021B571FEC001257DE /* FileMover.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileMover.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +64,9 @@
 			isa = PBXGroup;
 			children = (
 				ADCC792F1B51904D008DEDCA /* main.swift */,
+				ADF837021B571FEC001257DE /* FileMover.swift */,
+				ADF837001B571FD7001257DE /* FileDestination.swift */,
+				ADF836FE1B571F59001257DE /* FileBean.swift */,
 			);
 			path = "Photo Organizer";
 			sourceTree = "<group>";
@@ -119,6 +128,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				ADCC79301B51904D008DEDCA /* main.swift in Sources */,
+				ADF837011B571FD7001257DE /* FileDestination.swift in Sources */,
+				ADF836FF1B571F59001257DE /* FileBean.swift in Sources */,
+				ADF837031B571FEC001257DE /* FileMover.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -236,6 +248,7 @@
 				ADCC79351B51904D008DEDCA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
