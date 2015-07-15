@@ -13,13 +13,6 @@ let absSourceDir = "/Volumes/WD External Drive/Resorted media/"
 var fileManager = NSFileManager.defaultManager()
 var fileEnumerator = fileManager.enumeratorAtPath(absSourceDir)
 
-/*
-To do:
-Only move if the checksum is unique
-    Uniqueness checks will take a while once the library gets large...
-    Is this even necessary?
-*/
-
 struct FileBean {
     let path: String
     let fileAttributes: NSDictionary
