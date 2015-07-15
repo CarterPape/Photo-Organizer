@@ -8,8 +8,8 @@
 
 import Foundation
 
-let absSourceDir: String
-let absDestinationSpace: String
+var absSourceDir: String
+var absDestinationSpace: String
 if Process.arguments.count == 3 {
     absSourceDir = Process.arguments[1]
     absDestinationSpace = Process.arguments[2]
@@ -18,6 +18,13 @@ else {
     println("Bad argument count: \(Process.arguments.count - 1)\n" +
         "(we require 2: first, the source directory, and second, the destination space)")
     exit(1)
+}
+
+if !absSourceDir.hasSuffix("/") {
+    absSourceDir += "/"
+}
+if !absDestinationSpace.hasSuffix("/") {
+    absDestinationSpace += "/"
 }
 
 var fileManager = NSFileManager.defaultManager()
