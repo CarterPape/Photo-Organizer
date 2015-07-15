@@ -8,8 +8,8 @@
 
 import Foundation
 
-let absDestinationSpace = "/Users/Carter/Dropbox/Camera Uploads/"
-let absSourceDir = "/Volumes/WD External Drive/Resorted media/"
+let absSourceDir = Process.arguments[1]
+let absDestinationSpace = Process.arguments[2]
 var fileManager = NSFileManager.defaultManager()
 var fileEnumerator = fileManager.enumeratorAtPath(absSourceDir)
 
