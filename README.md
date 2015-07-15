@@ -1,23 +1,11 @@
 # Photo Organizer
 
-{
+This is a script for organizing photos, and in my personal case, it does so on an external hard drive. Originally, I made this program for moving files in my Dropbox folder to my external hard drive. It organizes the directories with the form
 
-    Do you have a gigantic photo library?
-    
-    Do you have a hard drive capacity that just can't take it any longer?
-    
-    Do you have a place to put those photos and videos?
-    
-}
+    /year/month/day/
 
-||
+and renames the files in the form
 
-{
+    year-month-day hour.minute.second.fileFormat
 
-    Do you want to organize all of your photos by date using a very specific directory structure?
-    
-    Are you comfortable with renaming all of those files to better sort them by date and time?
-
-}
-
-Well have I got the project for you! Introducing, **Photo Organizer**! A program for doing all of the things listed above.
+because that's what I wanted. Perhaps you want to organize your photos the same way. If so, feel free to use this project as you please.
