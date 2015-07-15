@@ -8,8 +8,16 @@
 
 import Foundation
 
-let absSourceDir = Process.arguments[1]
-let absDestinationSpace = Process.arguments[2]
+let absSourceDir: String
+let absDestinationSpace: String
+if Process.arguments.count > 3 {
+    absSourceDir = Process.arguments[1]
+    absDestinationSpace = Process.arguments[2]
+}
+else {
+    println("Not enough arguments (we require 2: first, the source directory, and second, the destination space)")
+    exit(1)
+}
 
 var fileManager = NSFileManager.defaultManager()
 var fileEnumerator = fileManager.enumeratorAtPath(absSourceDir)
