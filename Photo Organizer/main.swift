@@ -10,6 +10,7 @@ import Foundation
 
 var absSourceDir: String
 var absDestinationSpace: String
+
 if Process.arguments.count == 3 {
     absSourceDir = Process.arguments[1]
     absDestinationSpace = Process.arguments[2]
@@ -23,6 +24,7 @@ else {
 if !absSourceDir.hasSuffix("/") {
     absSourceDir += "/"
 }
+
 if !absDestinationSpace.hasSuffix("/") {
     absDestinationSpace += "/"
 }
