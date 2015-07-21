@@ -34,9 +34,12 @@ class FileDestination {
             + "." + fileExtension
     }
     
-    init(space: String, date: NSDate, originalFileName: String) {
+    init(space: String, dates: [NSDate], originalFileName: String) {
         self.space = space
-        self.date = date
+        self.date = NSDate()
+        for eachDate in dates {
+            self.date = self.date.earlierDate(eachDate)
+        }
         self.dateParts = date.description.componentsSeparatedByCharactersInSet(NSCharacterSet(charactersInString: " :-"))
         self.dateString = "-".join(dateParts[0...2]) + " " + ".".join(dateParts[3...5])
         self.immediateDirectory = dateString != "2001-01-01 00.00.00"

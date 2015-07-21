@@ -38,7 +38,7 @@ while let srcRelPath = fileEnumerator?.nextObject() as? String {
     
     if srcFile.fileType != "NSFileTypeDirectory" && !srcFile.fileName.hasPrefix(".") {
         var destination = FileDestination(space: absDestinationSpace,
-            date: srcFile.creationDate,
+            dates: srcFile.dates,
             originalFileName: srcRelPath.lastPathComponent)
         
         var fileMover = FileMover(srcFile: srcFile,
