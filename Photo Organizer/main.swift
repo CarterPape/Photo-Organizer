@@ -16,7 +16,7 @@ if CommandLine.arguments.count == 3 {
     absDestinationSpace = CommandLine.arguments[2]
 }
 else {
-    println("Bad argument count: \(CommandLine.arguments.count - 1)\n" +
+    print("Bad argument count: \(CommandLine.arguments.count - 1)\n" +
         "(we require 2: first, the source directory, and second, the destination space)")
     exit(1)
 }
@@ -33,13 +33,14 @@ var fileManager = FileManager.default
 var fileEnumerator = fileManager.enumerator(atPath: absSourceDir)
 
 while let srcRelPath = fileEnumerator?.nextObject() as? String {
+    let srcRelPathAsURL = URL(fileURLWithPath: srcRelPath)
     let srcFile = FileBean(fileManager: fileManager,
         absPath: absSourceDir + srcRelPath)
     
     if srcFile.fileType != "NSFileTypeDirectory" && !srcFile.fileName.hasPrefix(".") {
         var destination = FileDestination(space: absDestinationSpace,
             dates: srcFile.dates,
-            originalFileName: srcRelPath.lastPathComponent)
+            originalFileName: srcRelPathAsURL.lastPathComponent)
         
         var fileMover = FileMover(srcFile: srcFile,
             destination: destination,

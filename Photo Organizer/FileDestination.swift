@@ -35,18 +35,19 @@ class FileDestination {
     }
     
     init(space: String, dates: [Date], originalFileName: String) {
+        let originalFileURL = URL(fileURLWithPath: originalFileName)
         self.space = space
         self.date = Date()
         for eachDate in dates {
             self.date = (self.date as NSDate).earlierDate(eachDate)
         }
         self.dateParts = date.description.components(separatedBy: CharacterSet(charactersIn: " :-"))
-        self.dateString = "-".join(dateParts[0...2]) + " " + ".".join(dateParts[3...5])
+        self.dateString = dateParts[0...2].joined(separator: "-") + " " + dateParts[3...5].joined(separator: ".")
         self.immediateDirectory = dateString != "2001-01-01 00.00.00"
-            ? space + "/".join(dateParts[0...2]) + "/"
+            ? space + dateParts[0...2].joined(separator: "/") + "/"
             : space + "No date/"
-        self.originalFileNameWithoutExtension = originalFileName.lastPathComponent.stringByDeletingPathExtension
-        self.fileExtension = originalFileName.pathExtension
+        self.originalFileNameWithoutExtension = originalFileURL.deletingPathExtension().lastPathComponent
+        self.fileExtension = originalFileURL.pathExtension
         self.nonNumberedFileNameWithoutExtension = dateString != "2001-01-01 00.00.00"
             ? dateString
             : originalFileNameWithoutExtension

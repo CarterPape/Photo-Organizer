@@ -30,9 +30,13 @@ class FileMover {
             moveFileToNumberedDestination()
         }
         else {
-            fileManager.createDirectoryAtPath(destination.destinationDirectory,
-                withIntermediateDirectories: true, attributes: nil, error: nil)
-            move(from: srcFile.path, to: destination.nonNumberedPath)
+            do {
+                try fileManager.createDirectory(atPath:destination.destinationDirectory,
+                                                withIntermediateDirectories: true, attributes: nil)
+                move(from: srcFile.path, to: destination.nonNumberedPath)
+            } catch {
+                print("Couldn't create directory \(destination.destinationDirectory)")
+            }
         }
     }
     
@@ -44,13 +48,16 @@ class FileMover {
     }
     
     fileprivate func moveExistingNonNumberedFile() {
-        var existingFile = FileBean(fileManager: fileManager, absPath: destination.nonNumberedPath)
+        let existingFile = FileBean(fileManager: fileManager, absPath: destination.nonNumberedPath)
         move(from: existingFile.path, to: destination.firstNumberedPath)
     }
     
-    fileprivate func move(#from: String, _ to: String) {
-        var error: NSError?
-        fileManager.moveItemAtPath(from, toPath: to, error: &error)
-        println(error == nil ? "Moved \(from) to \(to)" : error!)
+    fileprivate func move(from: String, to: String) {
+        do {
+            try fileManager.moveItem(atPath: from, toPath: to)
+            print("Moved \(from) to \(to)")
+        } catch {
+            print("Error while moving \(from) to \(to)")
+        }
     }
 }
