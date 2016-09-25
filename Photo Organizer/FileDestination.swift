@@ -9,19 +9,19 @@
 import Foundation
 
 class FileDestination {
-    private var date: NSDate
-    private var dateParts: [String]
-    private var dateString: String
+    fileprivate var date: Date
+    fileprivate var dateParts: [String]
+    fileprivate var dateString: String
     
-    private var space: String
-    private var immediateDirectory: String
+    fileprivate var space: String
+    fileprivate var immediateDirectory: String
     var destinationDirectory: String {return immediateDirectory}
-    private var originalFileNameWithoutExtension: String
-    private var fileExtension: String
-    private var fileNumber: Int = 1
+    fileprivate var originalFileNameWithoutExtension: String
+    fileprivate var fileExtension: String
+    fileprivate var fileNumber: Int = 1
     
-    private var nonNumberedFileNameWithoutExtension: String
-    private var numberedFileNameWithoutExtension: String {
+    fileprivate var nonNumberedFileNameWithoutExtension: String
+    fileprivate var numberedFileNameWithoutExtension: String {
         return nonNumberedFileNameWithoutExtension + "-" + String(fileNumber)
     }
     
@@ -34,13 +34,13 @@ class FileDestination {
             + "." + fileExtension
     }
     
-    init(space: String, dates: [NSDate], originalFileName: String) {
+    init(space: String, dates: [Date], originalFileName: String) {
         self.space = space
-        self.date = NSDate()
+        self.date = Date()
         for eachDate in dates {
-            self.date = self.date.earlierDate(eachDate)
+            self.date = (self.date as NSDate).earlierDate(eachDate)
         }
-        self.dateParts = date.description.componentsSeparatedByCharactersInSet(NSCharacterSet(charactersInString: " :-"))
+        self.dateParts = date.description.components(separatedBy: CharacterSet(charactersIn: " :-"))
         self.dateString = "-".join(dateParts[0...2]) + " " + ".".join(dateParts[3...5])
         self.immediateDirectory = dateString != "2001-01-01 00.00.00"
             ? space + "/".join(dateParts[0...2]) + "/"

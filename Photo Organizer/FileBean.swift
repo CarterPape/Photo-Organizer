@@ -14,27 +14,27 @@ struct FileBean {
     let fileName: String
     let fileType: String
     let fileExtension: String
-    var dates: [NSDate]
+    var dates: [Date]
     
-    init(fileManager: NSFileManager, absPath: String) {
+    init(fileManager: FileManager, absPath: String) {
         self.path = absPath
         self.fileAttributes = fileManager.attributesOfItemAtPath(absPath, error: nil)!
         self.fileName = absPath.lastPathComponent
         self.fileType = fileAttributes["NSFileType"] as! String
         self.fileExtension = fileName.pathExtension
-        self.dates = [NSDate]()
-        if let creationDate = fileAttributes["NSFileCreationDate"] as? NSDate {
+        self.dates = [Date]()
+        if let creationDate = fileAttributes["NSFileCreationDate"] as? Date {
             self.dates.append(creationDate)
         }
-        if let modificationDate = fileAttributes["NSFileModificationDate"] as? NSDate {
+        if let modificationDate = fileAttributes["NSFileModificationDate"] as? Date {
             self.dates.append(modificationDate)
         }
         if count(fileName) >= 19 {
-            let dateFormatter = NSDateFormatter()
+            let dateFormatter = DateFormatter()
             dateFormatter.dateFormat = "yyyy-MM-dd HH.mm.ss"
             let index: String.Index = advance(fileName.startIndex, count(dateFormatter.dateFormat) + 1)
-            let dateString = fileName.substringToIndex(index)
-            if let dateFromName = dateFormatter.dateFromString(dateString) {
+            let dateString = fileName.substring(to: index)
+            if let dateFromName = dateFormatter.date(from: dateString) {
                 self.dates.append(dateFromName)
             }
         }
